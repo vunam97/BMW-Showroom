@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -57,4 +58,7 @@ public class Car {
     @ManyToOne
     @JoinColumn(name="category_id")
     private CarCategory carCategory;
+
+    @OneToMany(mappedBy = "car")
+    private List<CustomerReceiveAlertPrice> customerReceiveAlertPrices;
 }

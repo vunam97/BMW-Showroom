@@ -1,0 +1,37 @@
+package com.vti.testing.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "CustomerReceiveAlertPrice")
+public class CustomerReceiveAlertPrice {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "fullname", length = 50, nullable = false)
+    private String fullName;
+
+    @Column(name = "phoneNumber", length = 11, nullable = false)
+    private String phoneNumber;
+
+    @Column(name = "paymentMethod", length = 50, nullable = false)
+    private String paymentMethod;
+
+    @Column(name = "email", length = 50, nullable = false)
+    private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
+    private Account account;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false)
+    private Car car;
+}
