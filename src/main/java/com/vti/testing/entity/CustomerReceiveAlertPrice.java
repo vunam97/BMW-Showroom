@@ -24,13 +24,6 @@ public class CustomerReceiveAlertPrice {
     @Column(name = "paymentMethod", length = 50, nullable = false)
     private String paymentMethod;
 
-    @Column(name = "email", length = 50, nullable = false)
-    private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    private Account account;
-
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false)
     private Car car;

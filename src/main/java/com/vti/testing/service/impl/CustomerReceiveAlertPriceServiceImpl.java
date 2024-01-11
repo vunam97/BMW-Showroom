@@ -1,8 +1,6 @@
 package com.vti.testing.service.impl;
 
 import com.vti.testing.dto.CustomerReceiveAlertPriceDto;
-import com.vti.testing.entity.Account;
-import com.vti.testing.entity.Car;
 import com.vti.testing.entity.CustomerReceiveAlertPrice;
 import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceCreateForm;
 import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
@@ -14,7 +12,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,12 +33,6 @@ public class CustomerReceiveAlertPriceServiceImpl implements ICustomerReceiveAle
     @Override
     public CustomerReceiveAlertPriceDto create(CustomerReceiveAlertPriceCreateForm form) {
         CustomerReceiveAlertPrice customerReceiveAlertPrice = modelMapper.map(form, CustomerReceiveAlertPrice.class);
-        var car = new Car();
-        car.setId(form.getCarId());
-        var account = new Account();
-        account.setId(form.getAccountId());
-        customerReceiveAlertPrice.setCar(car);
-        customerReceiveAlertPrice.setAccount(account);
         var savedCustomerReceiveAlertPrice = repository.save(customerReceiveAlertPrice);
         return modelMapper.map(savedCustomerReceiveAlertPrice, CustomerReceiveAlertPriceDto.class);
     }
