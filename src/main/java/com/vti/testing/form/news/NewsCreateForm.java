@@ -9,6 +9,5 @@ import org.hibernate.validator.constraints.Length;
 public class NewsCreateForm {
     private String title;
     private String description;
-    private String detail;
     private String image;
 }

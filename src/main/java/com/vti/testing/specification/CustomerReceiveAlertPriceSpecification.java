@@ -23,6 +23,13 @@ public class CustomerReceiveAlertPriceSpecification {
                 Predicate hasFullNameLike = builder.like(fullName, pattern);
                 predicates.add(builder.or(hasFullNameLike));
             }
+
+            if (StringUtils.hasText(form.getPhone())) {
+                String pattern = "%" + form.getPhone().trim() + "%";
+                Path<String> phoneNumber = root.get("phoneNumber");
+                Predicate hasPhoneNumberLike = builder.like(phoneNumber, pattern);
+                predicates.add(builder.or(hasPhoneNumberLike));
+            }
             return builder.and(predicates.toArray(new Predicate[0]));
         };
     }

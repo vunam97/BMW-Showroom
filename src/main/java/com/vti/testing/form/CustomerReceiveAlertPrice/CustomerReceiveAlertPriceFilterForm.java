@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class CustomerReceiveAlertPriceFilterForm {
     private String name;
-
+    private String phone;
 }

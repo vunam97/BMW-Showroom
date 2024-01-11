@@ -11,7 +11,6 @@ public class NewsDto {
     private int id;
     private String title;
     private String description;
-    private String detail;
     private String image;
     private LocalDateTime dateNews;
 }

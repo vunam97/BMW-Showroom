@@ -9,6 +9,5 @@ public class NewsUpdateForm {
     private int id;
     private String title;
     private String description;
-    private String detail;
     private String image;
 }

@@ -23,9 +23,6 @@ public class News {
     @Column(name = "description", length = 200, nullable = false)
     private String description;
 
-    @Column(name = "detail", length = 1000, nullable = false)
-    private String detail;
-
     @Column(name = "image", length = 1000, nullable = false)
     private String image;
 
