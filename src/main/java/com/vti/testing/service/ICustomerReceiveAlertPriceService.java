@@ -12,7 +12,7 @@ public interface ICustomerReceiveAlertPriceService {
 
     CustomerReceiveAlertPriceDto create (CustomerReceiveAlertPriceCreateForm form);
 
-    CustomerReceiveAlertPriceDto create (CustomerReceiveAlertPriceUpdateForm form);
+    CustomerReceiveAlertPriceDto update (CustomerReceiveAlertPriceUpdateForm form);
 
     void deleteById(int id);
 }

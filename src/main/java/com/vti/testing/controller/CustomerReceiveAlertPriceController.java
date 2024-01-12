@@ -31,9 +31,9 @@ public class CustomerReceiveAlertPriceController {
     }
 
     @PutMapping("/customerReceiveAlertPrice/{id}")
-    public CustomerReceiveAlertPriceDto create (@RequestBody CustomerReceiveAlertPriceUpdateForm form, @PathVariable("id") int id) {
+    public CustomerReceiveAlertPriceDto update (@RequestBody CustomerReceiveAlertPriceUpdateForm form, @PathVariable("id") int id) {
         form.setId(id);
-        return service.create(form);
+        return service.update(form);
     }
 
     @DeleteMapping("/customerReceiveAlertPrice/{id}")
