@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ICarCategoryService {
     Page<CarCategory> getAllCarCategories(Pageable pageable);
+    CarCategory getCarCategoryById(int id);
     void createCarCategory(CreatingCarCategoryForm form);
     void updateCarCategory(UpdatingCarCategoryForm form);
     void deleteCarCategory(int id);

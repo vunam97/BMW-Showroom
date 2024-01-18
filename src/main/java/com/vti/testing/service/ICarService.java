@@ -11,8 +11,9 @@ import java.util.List;
 
 public interface ICarService {
    Page<Car> getAllCars(Pageable pageable, CarFilterForm form);
-
-   void createCar(CreatingCarForm form);
-   void updateCar(UpdatingCarForm form);
+   Car getCarById(int id);
+   Car createCar(CreatingCarForm form);
+   Car updateCar(UpdatingCarForm form);
    void deleteCar(int id);
+
 }

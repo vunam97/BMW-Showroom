@@ -1,9 +1,9 @@
 package com.vti.testing.controller;
 
 import com.vti.testing.dto.CustomerReceiveAlertPriceDto;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceCreateForm;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceUpdateForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceCreateForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceUpdateForm;
 import com.vti.testing.service.ICustomerReceiveAlertPriceService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

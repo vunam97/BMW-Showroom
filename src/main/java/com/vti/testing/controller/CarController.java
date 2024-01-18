@@ -7,7 +7,6 @@ import com.vti.testing.form.car.CreatingCarForm;
 import com.vti.testing.form.car.UpdatingCarForm;
 import com.vti.testing.service.ICarService;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -29,7 +28,7 @@ public class CarController {
     private ModelMapper modelMapper;
 
     @GetMapping
-    public Page<CarDTO> gerAllCars(Pageable pageable, CarFilterForm form){
+    public Page<CarDTO> getAllCars(Pageable pageable, CarFilterForm form){
         Page<Car> carPage = carService.getAllCars(pageable, form);
         List<Car> cars = carPage.getContent();
         List<CarDTO> carDTOS =
@@ -39,19 +38,35 @@ public class CarController {
     }
 
     @PostMapping ("/create")
-    public ResponseEntity<String> createCar(@RequestBody CreatingCarForm form) {
-        carService.createCar(form);
-        return new ResponseEntity<>("Create successfully", HttpStatus.CREATED);
+    public ResponseEntity<CarDTO> createCar(@RequestBody CreatingCarForm form) {
+//        carService.createCar(form);
+//        return new ResponseEntity<>("Create successfully", HttpStatus.CREATED);
+        Car car = carService.createCar(form);
+        CarDTO carDTO = modelMapper.map(car, CarDTO.class);
+        return new ResponseEntity<>(carDTO, HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateCar(@PathVariable int id, @RequestBody UpdatingCarForm form) {
+    public ResponseEntity<CarDTO> updateCar(@PathVariable int id, @RequestBody UpdatingCarForm form) {
         form.setId(id);
-        carService.updateCar(form);
-        return new ResponseEntity<>("Update successfully", HttpStatus.CREATED);
+//        carService.updateCar(form);
+//        return new ResponseEntity<>("Update successfully", HttpStatus.CREATED);
+        Car car = carService.updateCar(form);
+        CarDTO carDTO = modelMapper.map(car, CarDTO.class);
+        return new ResponseEntity<>(carDTO, HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable int id) {
         carService.deleteCar(id);
         return new ResponseEntity<>("Delete successfully", HttpStatus.CREATED);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCarById(@PathVariable int id) {
+        try {
+            Car car = carService.getCarById(id);
+            CarDTO carDTO = modelMapper.map(car, CarDTO.class);
+            return new ResponseEntity<>(carDTO, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -2,8 +2,6 @@ package com.vti.testing.controller;
 
 import com.vti.testing.dto.CarCategoryDTO;
 import com.vti.testing.entity.CarCategory;
-import com.vti.testing.form.car.CreatingCarForm;
-import com.vti.testing.form.car.UpdatingCarForm;
 import com.vti.testing.form.carCategory.CreatingCarCategoryForm;
 import com.vti.testing.form.carCategory.UpdatingCarCategoryForm;
 import com.vti.testing.service.ICarCategoryService;
@@ -32,9 +30,19 @@ public class CarCategoryController {
         List<CarCategory> carCategories = carCategoryPage.getContent();
         List<CarCategoryDTO> carCategoryDTOS =
                 carCategories.stream().map(carCategory ->
-                        modelMapper.map(carCategory, CarCategoryDTO.class))
+                                modelMapper.map(carCategory, CarCategoryDTO.class))
                         .collect(Collectors.toList());
         return new PageImpl<>(carCategoryDTOS, pageable,carCategoryPage.getTotalElements());
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCarCategoryById(@PathVariable int id) {
+        try {
+            CarCategory carCategory = carCategoryService.getCarCategoryById(id);
+            CarCategoryDTO carCategoryDTO = modelMapper.map(carCategory, CarCategoryDTO.class);
+            return new ResponseEntity<>(carCategoryDTO, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
     }
     @PostMapping("/create")
     public ResponseEntity<String> createCarCategory(@RequestBody CreatingCarCategoryForm form) {

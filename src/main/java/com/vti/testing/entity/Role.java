@@ -1,2 +1,5 @@
-package com.vti.testing.entity;public enum Role {
+package com.vti.testing.entity;
+
+public enum Role {
+    ADMIN, USER
 }

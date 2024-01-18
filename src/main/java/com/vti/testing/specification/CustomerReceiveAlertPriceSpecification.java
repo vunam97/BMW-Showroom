@@ -1,7 +1,7 @@
 package com.vti.testing.specification;
 
 import com.vti.testing.entity.CustomerReceiveAlertPrice;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 

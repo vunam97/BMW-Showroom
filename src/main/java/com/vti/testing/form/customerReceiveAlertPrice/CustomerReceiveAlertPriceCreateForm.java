@@ -1,4 +1,4 @@
-package com.vti.testing.form.CustomerReceiveAlertPrice;
+package com.vti.testing.form.customerReceiveAlertPrice;
 
 import lombok.Getter;
 import lombok.Setter;

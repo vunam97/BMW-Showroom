@@ -11,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
 
 @Service
 public class CarCategoryService implements ICarCategoryService {
@@ -24,6 +23,12 @@ public class CarCategoryService implements ICarCategoryService {
     @Override
     public Page<CarCategory> getAllCarCategories(Pageable pageable) {
         return carCategoryRepository.findAll(pageable);
+    }
+
+    @Override
+    public CarCategory getCarCategoryById(int id) {
+        return carCategoryRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Category not found with id: " + id));
     }
 
     @Override

@@ -1,9 +1,9 @@
 package com.vti.testing.service;
 
 import com.vti.testing.dto.CustomerReceiveAlertPriceDto;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceCreateForm;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
-import com.vti.testing.form.CustomerReceiveAlertPrice.CustomerReceiveAlertPriceUpdateForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceCreateForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceFilterForm;
+import com.vti.testing.form.customerReceiveAlertPrice.CustomerReceiveAlertPriceUpdateForm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

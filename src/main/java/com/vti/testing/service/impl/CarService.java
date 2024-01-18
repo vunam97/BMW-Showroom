@@ -36,19 +36,25 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public void createCar(@Valid CreatingCarForm form) {
-        Car car = modelMapper.map(form, Car.class);
-        CarCategory carCategory = carCategoryRepository.findByName(form.getCarCategoryName());
-        car.setCarCategory(carCategory);
-        carRepository.save(car);
+    public Car getCarById(int id) {
+        return carRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Car not found with id: " + id));
     }
 
     @Override
-    public void updateCar(UpdatingCarForm form) {
+    public Car createCar(@Valid CreatingCarForm form) {
         Car car = modelMapper.map(form, Car.class);
         CarCategory carCategory = carCategoryRepository.findByName(form.getCarCategoryName());
         car.setCarCategory(carCategory);
-        carRepository.save(car);
+        return carRepository.save(car);
+    }
+
+    @Override
+    public Car updateCar(UpdatingCarForm form) {
+        Car car = modelMapper.map(form, Car.class);
+        CarCategory carCategory = carCategoryRepository.findByName(form.getCarCategoryName());
+        car.setCarCategory(carCategory);
+        return carRepository.save(car);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.vti.testing.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +13,6 @@ public class NewsDto {
     private String title;
     private String description;
     private String image;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDateTime dateNews;
 }
