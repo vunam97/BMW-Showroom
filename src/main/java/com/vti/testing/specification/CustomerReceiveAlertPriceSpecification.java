@@ -17,18 +17,13 @@ public class CustomerReceiveAlertPriceSpecification {
                 return null;
             }
             List<Predicate> predicates = new ArrayList<>();
-            if (StringUtils.hasText(form.getName())) {
-                String pattern = "%" + form.getName().trim() + "%";
+            if (StringUtils.hasText(form.getSearch())) {
+                String pattern = "%" + form.getSearch().trim() + "%";
                 Path<String> fullName = root.get("fullName");
                 Predicate hasFullNameLike = builder.like(fullName, pattern);
-                predicates.add(builder.or(hasFullNameLike));
-            }
-
-            if (StringUtils.hasText(form.getPhone())) {
-                String pattern = "%" + form.getPhone().trim() + "%";
                 Path<String> phoneNumber = root.get("phoneNumber");
                 Predicate hasPhoneNumberLike = builder.like(phoneNumber, pattern);
-                predicates.add(builder.or(hasPhoneNumberLike));
+                predicates.add(builder.or(hasFullNameLike, hasPhoneNumberLike));
             }
             return builder.and(predicates.toArray(new Predicate[0]));
         };
